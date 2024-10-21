@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Lab</string>
+
+    <string name="UI_theme">Warhammer 40k fractions</string>
+    <string name="The_Imperium">Imperium</string>
+    <string name="Tau_Empire">Tau</string>
+    <string name="Chaos">Chaos</string>
+    <string name="Great_Devourer">Tiranids</string>
+    <string name="Orcs">Orcs</string>
+    <string name="Necrons">Necrons</string>
+    <string name="Eldars">Eldars</string>
+    <string name="Dark_Eldars">Dark eldars</string>
+
+    <string name="EditTextHint">Choose fraction</string>
+    <string name="Button1Text">Choose</string>
+    <string name="Button2Text">Clear field</string>
+
+    <string name="clearMsg">Cleared</string>
+    <string name="wrongInpMsg">Invalid input</string>
+
+    <string name="forEmperor">For the Emperor!</string>
+    <string name="supremeGood">Supreme Good!</string>
+    <string name="chaosBattleCry">Pain! Suffering! Everything will come to you!</string>
+    <string name="aeldari">Aeldari!</string>
+</resources>

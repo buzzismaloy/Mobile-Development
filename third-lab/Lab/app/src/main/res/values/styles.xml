@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Style TextView -->
+    <style name="CustomTextViewStyle">
+        <item name="android:textColor">#0bdbd8</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- Style Button -->
+    <style name="CustomButtonStyle">
+        <item name="android:textColor">#37eb34</item>
+        <item name="android:backgroundTint">#bb47ed</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <!-- Style EditText -->
+    <style name="CustomEditTextStyle">
+        <item name="android:padding">20dp</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+</resources>
