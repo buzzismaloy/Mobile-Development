@@ -7,8 +7,10 @@
     <string name="quiz_rules">Rules</string>
     <string name="quiz_quit">Quit</string>
     <string name="quiz_statistics">Statistics</string>
-    <string name="overall_pts">Overall points: </string>
-    <string name="total_questions">Total questions: </string>
+    <string name="overall_correct">Overall correct answers: </string>
+    <string name="overall_mistakes">Overall incorrect answers: </string>
+    <string name="total_tests">Passed the tests:</string>
+    <string name="share_statistics">Share</string>
     <string name="the_kendo_quiz">The kendo quiz</string>
     <string name="check_answer">Check</string>
     <string name="counter_text">Correct: 0 \ Incorrect: 0</string>
