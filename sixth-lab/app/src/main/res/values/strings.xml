@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">KendoQuizV1.1</string>
+
+    <string name="welcome_back">Welcome back!</string>
+    <string name="kendo_quiz">This is Kendo quiz</string>
+    <string name="quiz_start">Start quiz</string>
+    <string name="quiz_rules">Rules</string>
+    <string name="quiz_quit">Quit</string>
+    <string name="quiz_statistics">Statistics</string>
+    <string name="overall_pts">Overall points: </string>
+    <string name="total_questions">Total questions: </string>
+    <string name="the_kendo_quiz">The kendo quiz</string>
+    <string name="check_answer">Check</string>
+    <string name="counter_text">Correct: 0 \ Incorrect: 0</string>
+    <string name="the_hint">Enter Answer</string>
+
+    <string name="rules1_descr">
+        This quiz contains single-answer, multiple choice questions.
+        \nAlso, there are question with a free answer and the question about he image.
+        \nTotally, you will be asked 4 questions about kendo
+    </string>
+
+    <string name="question_1">What is the name of bamboo sword used in Kendo</string>
+    <string name="quest1_ans1">Bokuto</string>
+    <string name="quest1_ans2">Shinai</string>
+    <string name="quest1_ans3">Shinken</string>
+
+    <string name="quest2_ans1">Bokuto</string>
+    <string name="quest2_ans2">Tachi</string>
+    <string name="quest2_ans3">Bokken</string>
+    <string name="quest2_ans4">Iaito</string>
+</resources>

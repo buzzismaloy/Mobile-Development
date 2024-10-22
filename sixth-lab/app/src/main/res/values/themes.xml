@@ -1,0 +1,47 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.KendoQuizV11" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/indigo</item>
+        <item name="colorPrimaryVariant">@color/indigo</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+    </style>
+
+
+    <style name="btnStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/indigo</item>
+        <item name="cornerRadius">@dimen/btn_radius</item>
+        <item name="android:layout_height">@dimen/btn_height</item>
+    </style>
+
+    <style name="editTextLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">@color/edit_text_bg</item>
+        <item name="boxCornerRadiusTopStart">@dimen/edit_text_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/edit_text_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/edit_text_corner_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/edit_text_corner_radius</item>
+    </style>
+
+    <style name="titleTextStyle">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_radio_button_answer">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="buttonTint">@color/indigo</item>
+    </style>
+
+    <style name="text_heading">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Theme.KendoQuizV11" parent="Base.Theme.KendoQuizV11" />
+</resources>
