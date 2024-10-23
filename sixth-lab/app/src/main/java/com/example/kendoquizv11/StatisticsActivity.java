@@ -18,6 +18,11 @@ public class StatisticsActivity extends AppCompatActivity {
     private static final String TESTS_KEY = "completedTests";
     private SharedPreferences sharedPreferences;
 
+    private TextView tvCorrect;
+    private TextView tvIncorrect;
+    private TextView tvTests;
+
+
     @Override
     protected void onCreate(Bundle SavedInstanceState){
         super.onCreate(SavedInstanceState);
@@ -41,13 +46,13 @@ public class StatisticsActivity extends AppCompatActivity {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                shareStatistics();
             }
         });
 
-        TextView tvOverallCorrect = findViewById(R.id.tvOverallCorrect);
-        TextView tvOverallIncorrect = findViewById(R.id.tvOverallIncorrect);
-        TextView tvTotalTests = findViewById(R.id.tvTotalTests);
+        tvCorrect = findViewById(R.id.tvOverallCorrect);
+        tvIncorrect = findViewById(R.id.tvOverallIncorrect);
+        tvTests = findViewById(R.id.tvTotalTests);
 
         // Retrieve data from SharedPreferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -56,9 +61,9 @@ public class StatisticsActivity extends AppCompatActivity {
         int completedTests = sharedPreferences.getInt(TESTS_KEY, 0);
 
         // Set the data to the TextViews
-        tvOverallCorrect.setText(String.valueOf(correctAnswers));
-        tvOverallIncorrect.setText(String.valueOf(incorrectAnswers));
-        tvTotalTests.setText(String.valueOf(completedTests));
+        tvCorrect.setText(String.valueOf(correctAnswers));
+        tvIncorrect.setText(String.valueOf(incorrectAnswers));
+        tvTests.setText(String.valueOf(completedTests));
 
         btnClearStat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,13 +86,30 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
     private void updateStatisticsView(){
-        // Reset UI elements to reflect cleared statistics
-        TextView tvCorrect = findViewById(R.id.tvOverallCorrect);
-        TextView tvIncorrect = findViewById(R.id.tvOverallIncorrect);
-        TextView tvTests = findViewById(R.id.tvTotalTests);
-
         tvCorrect.setText("0");
         tvIncorrect.setText("0");
         tvTests.setText("0");
+    }
+
+    private void shareStatistics() {
+        String correct = tvCorrect.getText().toString();
+        String incorrect = tvIncorrect.getText().toString();
+        String totalTests = tvTests.getText().toString();
+
+        // Create the message to share
+        String shareMessage = "Quiz Statistics:\n"
+                + "Correct Answers: " + correct + "\n"
+                + "Incorrect Answers: " + incorrect + "\n"
+                + "Total Tests Completed: " + totalTests;
+
+        // Create an intent to share the message
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+
+        // Start the share intent, showing options to the user
+        startActivity(Intent.createChooser(shareIntent, "Share your statistics via:"));
+
     }
 }
