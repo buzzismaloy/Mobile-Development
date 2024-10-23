@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnStart = findViewById(R.id.btnStart);
         Button btnRules = findViewById(R.id.btnRules);
+        Button btnStatistics = findViewById(R.id.btnStatistics);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RulesActivity.class));
+            }
+        });
+
+        btnStatistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, StatisticsActivity.class));
             }
         });
     }

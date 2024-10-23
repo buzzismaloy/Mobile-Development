@@ -10,7 +10,7 @@ public class StatisticsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle SavedInstanceState){
         super.onCreate(SavedInstanceState);
-        setContentView(R.layout.activity_rules);
+        setContentView(R.layout.activity_statistics);
 
         ImageView goBack = findViewById(R.id.imageArrow);
         goBack.setOnClickListener(v -> finish());
