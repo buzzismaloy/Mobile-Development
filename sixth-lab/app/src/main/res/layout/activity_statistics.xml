@@ -104,10 +104,22 @@
         app:layout_constraintTop_toTopOf="@+id/textView7" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClearStat"
+        style="@style/btnStyle"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="0dp"
+        android:text="@string/clear_stat"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/btnFindOutMore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnFindOutMore"
         style="@style/btnStyle"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="0dp"
         android:text="@string/find_out_more"
         app:layout_constraintHorizontal_bias="0.5"
@@ -118,9 +130,9 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnShare"
         style="@style/btnStyle"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/share_statistics"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
