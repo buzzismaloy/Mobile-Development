@@ -1,4 +1,5 @@
 package com.example.kendoquizv11;
+import android.content.SharedPreferences;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
@@ -15,9 +16,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class QuizActivity extends AppCompatActivity {
-    //final int maxCountClicks = 4;
+    private final int MAX_COUNT_CLICKS = 3;
     QuestionAnswers questionAnswers;
-    int countClicks = 0, correctAns = 0, wrongAns = 0;
+    int countClicks = 0, correctAns = 0, wrongAns = 0, completedTests = 0;
+    int totalCorrectAns = 0, totalWrongAns = 0, totalCompletedTests;
+
+    private static final String PREFS_NAME = "QuizStats";
+    private static final String CORRECT_KEY = "correctAnswers";
+    private static final String INCORRECT_KEY = "incorrectAnswers";
+    private static final String TESTS_KEY = "completedTests";
+    SharedPreferences sharedPreferences;
 
     private RadioGroup radioGroup;
     //private RadioButton radioButton1, radioButton2, radioButton3;
@@ -40,6 +48,11 @@ public class QuizActivity extends AppCompatActivity {
             updateCounterView();
         }
 
+        sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        totalCorrectAns = sharedPreferences.getInt(CORRECT_KEY, 0);
+        totalWrongAns = sharedPreferences.getInt(INCORRECT_KEY, 0);
+        totalCompletedTests = sharedPreferences.getInt(TESTS_KEY, 0);
+
         radioGroup = findViewById(R.id.radioGroup);
         checkBoxGroup = findViewById(R.id.checkBoxGroup);
         checkBox1 = findViewById(R.id.checkBox1);
@@ -58,6 +71,7 @@ public class QuizActivity extends AppCompatActivity {
         ImageView goBack = findViewById(R.id.imageArrow);
         goBack.setOnClickListener(v -> finish());
 
+        Button btnRestart = findViewById(R.id.btnRestart);
         Button btnCheck = findViewById(R.id.btnCheck);
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,15 +119,46 @@ public class QuizActivity extends AppCompatActivity {
                         }
                         editTextAnsPic.setVisibility(View.INVISIBLE);
                         imageBogu.setVisibility(View.INVISIBLE);
-                        radioGroup.setVisibility(View.VISIBLE);
+                        //radioGroup.setVisibility(View.VISIBLE);
                         break;
                     }
                 }
+                if (countClicks == MAX_COUNT_CLICKS) {
+                    ++completedTests;
+                    textView3.setText("To restart, press button below,\nTo go back tap on Arrow");
+                    btnRestart.setVisibility(View.VISIBLE);
+                    btnCheck.setEnabled(false);
+                }
+                else {
+                    countClicks++;
+                    String question = questionAnswers.getQuestion(countClicks);
+                    textView3.setText(question);
+                }
                 updateCounterView();
-                if (countClicks == 3) countClicks = 0;
-                else countClicks++;
+            }
+        });
+
+        btnRestart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countClicks = 0;
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                totalCorrectAns += correctAns;
+                totalWrongAns += wrongAns;
+                totalCompletedTests += completedTests;
+                editor.putInt(CORRECT_KEY, totalCorrectAns);
+                editor.putInt(INCORRECT_KEY, totalWrongAns);
+                editor.putInt(TESTS_KEY, totalCompletedTests);
+                editor.apply();
+                correctAns = 0;
+                wrongAns = 0;
+                completedTests = 0;
+                updateCounterView();
+                radioGroup.setVisibility(View.VISIBLE);
                 String question = questionAnswers.getQuestion(countClicks);
                 textView3.setText(question);
+                btnRestart.setVisibility(View.INVISIBLE);
+                btnCheck.setEnabled(true);
             }
         });
 
@@ -133,6 +178,20 @@ public class QuizActivity extends AppCompatActivity {
         correctAns = savedInstanceState.getInt("correct");
         wrongAns = savedInstanceState.getInt("wrong");
         updateCounterView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        totalCorrectAns += correctAns;
+        totalWrongAns += wrongAns;
+        totalCompletedTests += completedTests;
+        editor.putInt(CORRECT_KEY, totalCorrectAns);
+        editor.putInt(INCORRECT_KEY, totalWrongAns);
+        editor.putInt(TESTS_KEY, totalCompletedTests);
+        editor.apply();
     }
 
     private void updateCounterView(){

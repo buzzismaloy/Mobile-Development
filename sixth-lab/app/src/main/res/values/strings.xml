@@ -16,6 +16,7 @@
     <string name="ajkf_links">AJKF Links</string>
     <string name="youtube">YouTube</string>
     <string name="site">Site</string>
+    <string name="restart">Restart</string>
     <string name="the_kendo_quiz">The kendo quiz</string>
     <string name="check_answer">Check</string>
     <string name="counter_text">Correct: 0 \ Incorrect: 0</string>
