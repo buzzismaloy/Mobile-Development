@@ -12,7 +12,7 @@
         android:id="@+id/WelcomeMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="70dp"
         android:text="@string/welcome_back"
         android:textColor="@color/black"
         android:textSize="28sp"
@@ -25,7 +25,7 @@
         android:id="@+id/theSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="3dp"
         android:text="@string/kendo_quiz"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -37,7 +37,7 @@
         android:id="@+id/btnStart"
         style="@style/btnStyle"
         android:layout_width="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/quiz_start"
         app:layout_constraintEnd_toEndOf="@+id/theSubtitle"
         app:layout_constraintHorizontal_bias="0.5"
@@ -45,15 +45,28 @@
         app:layout_constraintTop_toBottomOf="@+id/theSubtitle" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRules"
+        android:id="@+id/btnStatistics"
         style="@style/btnStyle"
         android:layout_width="0dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/quiz_rules"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="0dp"
+        android:text="@string/quiz_statistics"
         app:layout_constraintEnd_toEndOf="@+id/btnStart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/btnStart"
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRules"
+        style="@style/btnStyle"
+        android:layout_width="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="0dp"
+        android:text="@string/quiz_rules"
+        app:layout_constraintEnd_toEndOf="@+id/btnStart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/btnStatistics"
+        app:layout_constraintTop_toBottomOf="@+id/btnStatistics" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
