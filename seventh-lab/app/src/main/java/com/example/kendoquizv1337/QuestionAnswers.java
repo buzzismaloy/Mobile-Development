@@ -38,4 +38,8 @@ public class QuestionAnswers {
         return generalQuestions.get(question);
     }
 
+    public final int getTotalQuestions() {
+        return QUESTIONS.length;
+    }
+
 }
