@@ -21,10 +21,10 @@
 
     <EditText
         android:id="@+id/answerEditText1"
-        android:layout_width="match_parent"
+        android:layout_width="241dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Type your answer here"
+        android:hint="@string/the_hint"
         android:inputType="text" />
 
     <Button
