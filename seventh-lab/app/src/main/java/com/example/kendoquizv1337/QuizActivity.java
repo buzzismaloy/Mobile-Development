@@ -17,22 +17,23 @@ public class QuizActivity extends AppCompatActivity {
     private final QuestionAnswers questionAnswers = new QuestionAnswers();
     private TextView counterTextView;
 
-    /*private static final String PREFS_NAME = "QuizStats";
+    private static final String PREFS_NAME = "QuizStats";
     private static final String CORRECT_KEY = "correctAnswers";
     private static final String INCORRECT_KEY = "incorrectAnswers";
     private static final String TESTS_KEY = "completedTests";
-    private SharedPreferences sharedPreferences;*/
+    private SharedPreferences sharedPreferences;
 
     //private ViewPager2 viewPager;
 
     private int totalCorrectAns, totalWrongAns, totalCompletedTests;
-    private int questionIndex = 0, curCorrectAns = 0, curWrongAns = 0;
+    private int questionIndex = 0, curCorrectAns = 0, curWrongAns = 0, completedTests = 0;
 
     private final Fragment[] questionFragments = {
             new RadioQuestionFragment(),
             new CheckBoxQuestionFragment(),
             new EditTextQuestionFragment(),
-            new PictureQuestionFragment()
+            new PictureQuestionFragment(),
+            new RestartFragment()
     };
 
     @Override
@@ -43,20 +44,50 @@ public class QuizActivity extends AppCompatActivity {
         if (savedInstanceState == null){
             showQuestionFragment(questionIndex);
         }
-        /*else {
-            correctAns = savedInstanceState.getInt("correct");
-            wrongAns = savedInstanceState.getInt("wrong");
+        else {
+            curCorrectAns = savedInstanceState.getInt("correct");
+            curWrongAns = savedInstanceState.getInt("wrong");
             updateCounterView();
-        }*/
+        }
 
-        /*sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         totalCorrectAns = sharedPreferences.getInt(CORRECT_KEY, 0);
         totalWrongAns = sharedPreferences.getInt(INCORRECT_KEY, 0);
-        totalCompletedTests = sharedPreferences.getInt(TESTS_KEY, 0);*/
+        totalCompletedTests = sharedPreferences.getInt(TESTS_KEY, 0);
 
         counterTextView = findViewById(R.id.counterTextView);
         ImageView goBack = findViewById(R.id.imageArrow1);
         goBack.setOnClickListener(v -> onBackPressed());
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("correct", curCorrectAns);
+        outState.putInt("wrong", curWrongAns);
+    }
+
+    // Восстановление данных
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        curCorrectAns = savedInstanceState.getInt("correct");
+        curWrongAns = savedInstanceState.getInt("wrong");
+        updateCounterView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        totalCorrectAns += curCorrectAns;
+        totalWrongAns += curWrongAns;
+        totalCompletedTests += completedTests;
+        editor.putInt(CORRECT_KEY, totalCorrectAns);
+        editor.putInt(INCORRECT_KEY, totalWrongAns);
+        editor.putInt(TESTS_KEY, totalCompletedTests);
+        editor.apply();
     }
 
     public void nextQuestion() {
@@ -65,7 +96,21 @@ public class QuizActivity extends AppCompatActivity {
             showQuestionFragment(questionIndex);
         }
         else {
-
+            completedTests++;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            totalCorrectAns += curCorrectAns;
+            totalWrongAns += curWrongAns;
+            totalCompletedTests += completedTests;
+            editor.putInt(CORRECT_KEY, totalCorrectAns);
+            editor.putInt(INCORRECT_KEY, totalWrongAns);
+            editor.putInt(TESTS_KEY, totalCompletedTests);
+            editor.apply();
+            questionIndex = 0;
+            completedTests = 0;
+            curCorrectAns = 0;
+            curWrongAns = 0;
+            updateCounterView();
+            showQuestionFragment(questionIndex);
         }
     }
 
@@ -131,11 +176,15 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (questionIndex > 0){
+        if (questionIndex > 0 && questionIndex != questionFragments.length - 1){
             --questionIndex;
             super.onBackPressed();
         }
-        else
+        else{
+            if(curWrongAns + curCorrectAns == questionFragments.length)
+                ++completedTests;
             finish();
+        }
+
     }
 }
