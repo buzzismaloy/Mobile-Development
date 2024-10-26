@@ -6,14 +6,14 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/questionText"
+        android:id="@+id/questionText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your question text here"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/answerEditText"
+        android:id="@+id/answerEditText0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -21,7 +21,7 @@
         android:inputType="text" />
 
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/btnNext2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
