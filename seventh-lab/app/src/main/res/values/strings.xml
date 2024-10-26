@@ -22,6 +22,8 @@
     <string name="check_answer">Check</string>
     <string name="counter_text">Correct: 0 \ Incorrect: 0</string>
     <string name="the_hint">Enter Answer</string>
+    <string name="restart_btn">Restart</string>
+    <string name="restart_text">To restart, press button\nTo go back press arrow</string>
 
     <string name="rules1_descr">
         This quiz contains single-answer, multiple choice questions.
