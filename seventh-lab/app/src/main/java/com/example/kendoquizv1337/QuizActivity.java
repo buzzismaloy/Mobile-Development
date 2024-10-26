@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 public class QuizActivity extends AppCompatActivity {
-    private QuestionAnswers questionAnswers;
+    private final QuestionAnswers questionAnswers = new QuestionAnswers();
 
-    private static final String PREFS_NAME = "QuizStats";
+    /*private static final String PREFS_NAME = "QuizStats";
     private static final String CORRECT_KEY = "correctAnswers";
     private static final String INCORRECT_KEY = "incorrectAnswers";
     private static final String TESTS_KEY = "completedTests";
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences;*/
 
     //private ViewPager2 viewPager;
 
@@ -48,8 +48,6 @@ public class QuizActivity extends AppCompatActivity {
         totalCorrectAns = sharedPreferences.getInt(CORRECT_KEY, 0);
         totalWrongAns = sharedPreferences.getInt(INCORRECT_KEY, 0);
         totalCompletedTests = sharedPreferences.getInt(TESTS_KEY, 0);*/
-
-        questionAnswers = new QuestionAnswers();
 
         ImageView goBack = findViewById(R.id.imageArrow1);
         goBack.setOnClickListener(v -> onBackPressed());
