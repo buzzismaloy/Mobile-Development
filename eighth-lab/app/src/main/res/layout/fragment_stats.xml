@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/correct_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/overall_correct"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/incorrect_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/overall_mistakes"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tests_completed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_tests"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/share_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share_statistics"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restart_btn"
+        android:layout_marginTop="5dp" />
+</LinearLayout>
