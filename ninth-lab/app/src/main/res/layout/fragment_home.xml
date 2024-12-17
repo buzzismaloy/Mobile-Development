@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/WelcomeMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_back"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/btnStyle"
+            android:layout_width="164dp"
+            android:layout_height="64dp"
+            android:text="@string/quiz_start"
+            android:id="@+id/btnQuiz" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFindOutMore"
+            style="@style/btnStyle"
+            android:layout_width="164dp"
+            android:layout_height="64dp"
+            android:text="@string/find_out_more" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRules"
+            style="@style/btnStyle"
+            android:layout_width="164dp"
+            android:layout_height="64dp"
+            android:text="@string/quiz_rules" />
+
+    </LinearLayout>
+
+
+</FrameLayout>
