@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">pikifazi</string>
+
+    <string name="choose_msg">Выберите режим игры</string>
+    <string name="repeat_msg">С повторами цифр</string>
+    <string name="norepeat_msg">Без повторов цифр</string>
+</resources>
