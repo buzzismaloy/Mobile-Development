@@ -214,4 +214,14 @@ public static void main(String[] args) {
 
 # Зачетная работа
 
+## Приложение для сравнения `layoutManager-ов` для `RecyclerView`
+
+### Требования
+
+1. В проекте три фрагмента с `RecyclerView`, в каждом разный `layoutManager`: `LinearLayoutManager`, `GridLayoutManager`, `StaggeredLayoutManager`. На карточках в Manager-ах выводится изображение автомобилей(8 штук), название машины, цена автомобиля.
+2. На активности внизу 3 кнопки для переключения `RecyclerView` с соответствующим `layoutManager-ом`, остальное пространство экрана занимает сам `RecyclerView`.
+3. Обработку кликов на карточки можно не писать
+
+---
+
 
