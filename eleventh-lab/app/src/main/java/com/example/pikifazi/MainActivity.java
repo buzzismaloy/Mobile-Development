@@ -1,35 +1,47 @@
 package com.example.pikifazi;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.pikifazi.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
+    private GameViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // включение dataBinding
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        findViewById(R.id.button_with_repeats).setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, RepeatActivity.class);
-            startActivity(intent);
-        });
+        viewModel = new ViewModelProvider(this).get(GameViewModel.class);
+        binding.setViewModel(viewModel);
+        binding.setLifecycleOwner(this);
 
-        findViewById(R.id.button_without_repeats).setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, NoRepeatActivity.class);
-            startActivity(intent);
-        });
+
+        binding.submitButton.setOnClickListener(v -> handleAttempt());
+        binding.endGameButton.setOnClickListener(v -> showAnswer());
+    }
+
+
+
+    private void handleAttempt() {
+        String input = binding.inputSequence.getText().toString();
+        if (input.length() != 4) {
+            viewModel.resultText.set("Введите ровно 4 цифры!");
+            return;
+        }
+        viewModel.checkAttempt(input);
+    }
+
+    private void showAnswer() {
+        viewModel.resultText.set("Загаданная последовательность: " + viewModel.getSecretCode());
     }
 }

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.pikifazi.GameViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,26 +12,41 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <EditText
+            android:id="@+id/input_sequence"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:hint="Угадай число"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:text="Угадываем" />
+
+
         <TextView
+            android:id="@+id/history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/choose_msg"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.historyText}" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.resultText}" />
 
         <Button
-            android:id="@+id/button_with_repeats"
-            android:layout_width="match_parent"
+            android:id="@+id/end_game_button"
+            android:layout_width="138dp"
             android:layout_height="wrap_content"
-            android:text="@string/repeat_msg"
-            android:layout_marginBottom="16dp" />
-
-        <Button
-            android:id="@+id/button_without_repeats"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/norepeat_msg" />
+            android:layout_marginTop="16dp"
+            android:text="Завершить игру" />
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

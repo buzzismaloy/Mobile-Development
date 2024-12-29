@@ -6,9 +6,14 @@ android {
     namespace = "com.example.pikifazi"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+        }
+
     defaultConfig {
         applicationId = "com.example.pikifazi"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -32,6 +37,7 @@ android {
 }
 
 dependencies {
+
 
     implementation(libs.appcompat)
     implementation(libs.material)

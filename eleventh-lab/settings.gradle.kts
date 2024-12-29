@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "pikifazi"
+rootProject.name = "PikiFazi"
 include(":app")
+ 
